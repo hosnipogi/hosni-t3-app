@@ -35,7 +35,7 @@ const Nav = () => {
             Sign in to add a post!
           </p>
           <div className="text-right md:w-80">
-            <Button onClick={handleSignIn}>&larr; Sign In</Button>
+            <Button onClick={handleSignIn} title="&larr; Sign In" />
           </div>
         </>
       ) : (
@@ -44,8 +44,8 @@ const Nav = () => {
             {session.data?.user?.name}! 🎉
           </p>
           <div className="space-x-4 text-right md:w-80">
-            <Button onClick={handleAddPost}>Add Post</Button>
-            <Button onClick={handleLogout}>Log out</Button>
+            <Button title="Add Post" onClick={handleAddPost} />
+            <Button title="Log out" onClick={handleLogout} />
           </div>
         </>
       )}

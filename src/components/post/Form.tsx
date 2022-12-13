@@ -100,10 +100,10 @@ const Form = () => {
       <Button
         className="w-full"
         onClick={handleSubmit(handleAddPost)}
-        disabled={fields.length === 0}
-      >
-        Add new post
-      </Button>
+        disabled={fields.length === 0 || addPost.isLoading}
+        title="Add new post"
+        isLoading={addPost.isLoading}
+      />
     </>
   );
 };

@@ -70,9 +70,10 @@ const Signup = () => {
         color="default"
         disabled={isLoading}
         className="w-full"
-      >
-        Submit
-      </Button>
+        title="Submit"
+        isLoading={isLoading}
+      />
+
       {error && <p className="text-red-500">{error.message}</p>}
       <hr className="my-4" />
       <div className="flex flex-row justify-end space-x-2">

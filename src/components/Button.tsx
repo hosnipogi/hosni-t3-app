@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "./Spinner";
 
 interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -6,11 +7,13 @@ interface ButtonProps
     HTMLButtonElement
   > {
   color?: "default" | "success" | "error";
+  isLoading?: boolean;
+  title: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
-    const { color, ...rest } = props;
+    const { color, title, isLoading, ...rest } = props;
     let theme;
 
     switch (color) {
@@ -35,7 +38,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     const className =
-      `inline-block px-6 py-2.5 text-white font-medium uppercase rounded-lg shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out ${theme} ${
+      `inline-block min-h-12 px-6 py-2.5 text-white font-medium uppercase rounded-lg shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out ${theme} ${
         rest.className ?? ""
       }`.trim();
 
@@ -46,7 +49,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ...rest,
           className,
         }}
-      />
+      >
+        {isLoading ? <Spinner size="xs" theme="light" /> : title}
+      </button>
     );
   }
 );

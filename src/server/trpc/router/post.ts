@@ -1,4 +1,3 @@
-import simulateDelay from "@/server/common/auth/simulateDelay";
 import responseGenerator from "@/server/common/responseGenerator";
 import { postSchema } from "@/server/common/validation/post";
 import { router, publicProcedure, protectedProcedure } from "../trpc";
@@ -14,7 +13,6 @@ export const postRouter = router({
         posts: true,
       },
     });
-    await simulateDelay(300);
     return responseGenerator(200, "Success", categories);
   }),
   addPost: protectedProcedure.input(postSchema).mutation(async (req) => {
